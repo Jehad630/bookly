@@ -40,6 +40,7 @@ class BestSellerListViewItem extends StatelessWidget {
               aspectRatio: 2.5 / 4,
               child: Container(
                 decoration: BoxDecoration(
+                  color: Colors.red,
                   borderRadius: BorderRadius.circular(16),
                   image: const DecorationImage(
                     fit: BoxFit.fill,
@@ -56,7 +57,10 @@ class BestSellerListViewItem extends StatelessWidget {
                 children: [
                   const Text(
                     "Book Title",
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    maxLines: 2,
+                    overflow: TextOverflow
+                        .ellipsis, // llllllllll... if text its long puts 3 points in the end
+                    style: Styles.textStyle20,
                   ),
                   const SizedBox(height: 4),
                   const Text(
