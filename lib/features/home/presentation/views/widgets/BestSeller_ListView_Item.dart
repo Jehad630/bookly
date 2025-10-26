@@ -1,8 +1,8 @@
-
 import 'package:booklyapp/constants.dart';
 import 'package:booklyapp/core/utils/assets.dart';
 import 'package:booklyapp/core/utils/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class BestSellerListViewItem extends StatelessWidget {
   const BestSellerListViewItem({super.key});
@@ -34,12 +34,14 @@ class BestSellerListViewItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text(
+                  Text(
                     "Book Title",
                     maxLines: 2,
                     overflow: TextOverflow
                         .ellipsis, // llllllllll... if text its long puts 3 points in the end
-                    style: Styles.textStyle20,
+                    style: Styles.textStyle20.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   const SizedBox(height: 4),
                   const Text(
@@ -54,12 +56,17 @@ class BestSellerListViewItem extends StatelessWidget {
                         "Free",
                         style: Styles.textStyle20.copyWith(
                           fontFamily: kGTSectraFine,
-                          fontWeight: FontWeight.bold
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                       Spacer(),
-                      Icon(Icons.star, color: Colors.amber),
-                      SizedBox(width: 4),
+                      Icon(
+                        FontAwesomeIcons.solidStar,
+                        color: Color(0xffFFDD4F),
+                      ),
+                      SizedBox(width: 6),
+                      Text("4.8"),
+                      SizedBox(width: 5),
                       Text("(2390)"),
                     ],
                   ),
