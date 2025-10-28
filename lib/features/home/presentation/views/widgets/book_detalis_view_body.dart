@@ -2,6 +2,7 @@ import 'package:booklyapp/core/utils/styles.dart';
 import 'package:booklyapp/features/home/presentation/views/widgets/Custom_Book_Image.dart';
 import 'package:booklyapp/features/home/presentation/views/widgets/custom_book_detalis_app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class BookDetalisViewBody extends StatelessWidget {
   const BookDetalisViewBody({super.key});
@@ -26,7 +27,7 @@ class BookDetalisViewBody extends StatelessWidget {
                 .ellipsis, // llllllllll... if text its long puts 3 points in the end
             style: Styles.textStyle30.copyWith(fontWeight: FontWeight.bold),
           ),
-          const SizedBox(height: 6),
+          const SizedBox(height: 5),
           Text(
             "Author Name",
             maxLines: 1,
@@ -34,6 +35,17 @@ class BookDetalisViewBody extends StatelessWidget {
               fontStyle: FontStyle.italic,
               fontWeight: FontWeight.w500,
             ),
+          ),
+          SizedBox(height: 18,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(FontAwesomeIcons.solidStar, color: Color(0xffFFDD4F)),
+              SizedBox(width: 10),
+              Text("4.8"),
+              SizedBox(width: 5),
+              Text("(2390)",style: TextStyle(color: Color(0xff707070)),),
+            ],
           ),
         ],
       ),

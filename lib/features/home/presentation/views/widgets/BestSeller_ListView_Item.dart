@@ -73,7 +73,7 @@ class BestSeller_ListView_Item extends StatelessWidget {
                         SizedBox(width: 6),
                         Text("4.8"),
                         SizedBox(width: 5),
-                        Text("(2390)"),
+                        Text("(2390)",style: TextStyle(color: Color(0xff707070))),
                       ],
                     ),
                   ],
