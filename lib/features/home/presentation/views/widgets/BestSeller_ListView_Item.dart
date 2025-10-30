@@ -14,7 +14,7 @@ class BookListViewItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
-        onTap: (){
+        onTap: () {
           GoRouter.of(context).push(AppRouter.kbookdetalisView);
         },
         child: SizedBox(
@@ -73,7 +73,10 @@ class BookListViewItem extends StatelessWidget {
                         SizedBox(width: 6),
                         Text("4.8"),
                         SizedBox(width: 5),
-                        Text("(2390)",style: TextStyle(color: Color(0xff707070))),
+                        Text(
+                          "(2390)",
+                          style: TextStyle(color: Color(0xff707070)),
+                        ),
                       ],
                     ),
                   ],

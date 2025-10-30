@@ -16,7 +16,9 @@ class CustomAppBar extends StatelessWidget {
           Image.asset(AssetsData.logo, height: 24),
           Spacer(),
           IconButton(
-            onPressed: () { GoRouter.of(context).push(AppRouter.kSerachView);},
+            onPressed: () {
+              GoRouter.of(context).push(AppRouter.kSerachView);
+            },
             icon: Icon(FontAwesomeIcons.magnifyingGlass, size: 32),
           ),
         ],

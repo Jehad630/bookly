@@ -16,10 +16,7 @@ abstract class AppRouter {
         path: kbookdetalisView,
         builder: (context, state) => BookDetalisView(),
       ),
-      GoRoute(
-        path: kSerachView,
-        builder: (context, state) => SerachView(),
-      ),
+      GoRoute(path: kSerachView, builder: (context, state) => SerachView()),
     ],
   );
 }
