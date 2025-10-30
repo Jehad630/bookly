@@ -36,7 +36,7 @@ class BookDetalisViewBody extends StatelessWidget {
               fontWeight: FontWeight.w500,
             ),
           ),
-          SizedBox(height: 18,),
+          SizedBox(height: 18),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -44,11 +44,23 @@ class BookDetalisViewBody extends StatelessWidget {
               SizedBox(width: 10),
               Text("4.8"),
               SizedBox(width: 5),
-              Text("(2390)",style: TextStyle(color: Color(0xff707070)),),
+              Text("(2390)", style: TextStyle(color: Color(0xff707070))),
             ],
           ),
+
+
         ],
       ),
     );
+  }
+}
+
+
+class BooksAction extends StatelessWidget {
+  const BooksAction({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return  Row(children: [],);
   }
 }
