@@ -1,7 +1,8 @@
 import 'package:booklyapp/core/utils/styles.dart';
-import 'package:booklyapp/core/widgets/Custom_Button.dart';
 import 'package:booklyapp/features/home/presentation/views/widgets/Custom_Book_Image.dart';
+import 'package:booklyapp/features/home/presentation/views/widgets/books_action.dart';
 import 'package:booklyapp/features/home/presentation/views/widgets/custom_book_detalis_app_bar.dart';
+import 'package:booklyapp/features/home/presentation/views/widgets/similar_books_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -50,42 +51,19 @@ class BookDetalisViewBody extends StatelessWidget {
           ),
           SizedBox(height: 37),
           BooksAction(),
+          SizedBox(height: 50),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              "You can also like",
+              style: Styles.textStyle16.copyWith(fontWeight: FontWeight.w900),
+            ),
+          ),
+        const  SizedBox(height: 16,),
+          const SimilarBooksListView(),
+          
         ],
       ),
-    );
-  }
-}
-
-class BooksAction extends StatelessWidget {
-  const BooksAction({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          child: CustomButton(
-            text: "Free",
-            backgroundColor: Colors.white,
-            textColor: Colors.black,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(16),
-              bottomLeft: Radius.circular(16),
-            ),
-          ),
-        ),
-        Expanded(
-          child: CustomButton(
-            text: "Preview",
-            backgroundColor: const Color.fromARGB(255, 216, 132, 132),
-            textColor: Colors.white,
-            borderRadius: BorderRadius.only(
-              topRight: Radius.circular(16),
-              bottomRight: Radius.circular(16),
-            ),
-          ),
-        ),
-      ],
     );
   }
 }
