@@ -1,6 +1,9 @@
+// repositry pattern
+import 'package:booklyapp/core/errors/Failure.dart';
+import 'package:booklyapp/features/home/data/models/books_model/books_model.dart';
+import 'package:dartz/dartz.dart';
 
-// repositry pattern 
 abstract class HomeRepo {
-  fetchBestSellerBooks();
-  fetchFeaturedBooks();
+  Future<Either<Failure,List<BooksModel>>> fetchBestSellerBooks();
+  Future<Either<Failure,List<BooksModel>>>  fetchFeaturedBooks();
 }
