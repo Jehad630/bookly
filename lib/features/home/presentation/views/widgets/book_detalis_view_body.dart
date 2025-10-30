@@ -12,58 +12,74 @@ class BookDetalisViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     dynamic WidthSc = MediaQuery.of(context).size.width;
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 30.0),
-      child: Column(
-        children: [
-          CustomBookDetalisAppBar(),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: WidthSc * .17),
-            child: CustomBookImage(),
-          ),
-          SizedBox(height: 43),
-          Text(
-            "Book Title",
-            maxLines: 2,
-            overflow: TextOverflow
-                .ellipsis, // llllllllll... if text its long puts 3 points in the end
-            style: Styles.textStyle30.copyWith(fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 5),
-          Text(
-            "Author Name",
-            maxLines: 1,
-            style: Styles.textStyle20.copyWith(
-              fontStyle: FontStyle.italic,
-              fontWeight: FontWeight.w500,
+    return CustomScrollView(
+      slivers: [
+        SliverFillRemaining(
+          hasScrollBody: false,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30.0),
+            child: Column(
+              children: [
+                CustomBookDetalisAppBar(),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: WidthSc * .17),
+                  child: CustomBookImage(),
+                ),
+                SizedBox(height: 43),
+                Text(
+                  "Book Title",
+                  maxLines: 2,
+                  overflow: TextOverflow
+                      .ellipsis, // llllllllll... if text its long puts 3 points in the end
+                  style: Styles.textStyle30.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 5),
+                Text(
+                  "Author Name",
+                  maxLines: 1,
+                  style: Styles.textStyle20.copyWith(
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                SizedBox(height: 18),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Icon(
+                      FontAwesomeIcons.solidStar,
+                      color: Color(0xffFFDD4F),
+                    ),
+                    const SizedBox(width: 10),
+                    const Text("4.8"),
+                    const SizedBox(width: 5),
+                    const Text(
+                      "(2390)",
+                      style: TextStyle(color: Color(0xff707070)),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 37),
+                BooksAction(),
+                const Expanded(child: SizedBox(height: 50)),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "You can also like",
+                    style: Styles.textStyle16.copyWith(
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 16),
+                const SimilarBooksListView(),
+              ],
             ),
           ),
-          SizedBox(height: 18),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(FontAwesomeIcons.solidStar, color: Color(0xffFFDD4F)),
-              SizedBox(width: 10),
-              Text("4.8"),
-              SizedBox(width: 5),
-              Text("(2390)", style: TextStyle(color: Color(0xff707070))),
-            ],
-          ),
-          SizedBox(height: 37),
-          BooksAction(),
-          SizedBox(height: 50),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              "You can also like",
-              style: Styles.textStyle16.copyWith(fontWeight: FontWeight.w900),
-            ),
-          ),
-        const  SizedBox(height: 16,),
-          const SimilarBooksListView(),
-          
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
