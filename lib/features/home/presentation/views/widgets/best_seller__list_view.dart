@@ -12,7 +12,7 @@ class BestSeller_ListView extends StatelessWidget {
       padding: EdgeInsets.zero,
       itemCount: 10,
       itemBuilder: (context,index){
-      return BestSeller_ListView_Item();
+      return BookListViewItem();
     });
   }
 }

@@ -1,7 +1,5 @@
-import 'package:booklyapp/core/utils/styles.dart';
 import 'package:booklyapp/features/home/presentation/views/widgets/book_detalis_section.dart';
 import 'package:booklyapp/features/home/presentation/views/widgets/custom_book_detalis_app_bar.dart';
-import 'package:booklyapp/features/home/presentation/views/widgets/similar_books_list_view.dart';
 import 'package:booklyapp/features/home/presentation/views/widgets/similar_books_section.dart';
 import 'package:flutter/material.dart';
 
