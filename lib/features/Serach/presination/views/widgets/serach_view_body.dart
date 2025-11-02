@@ -33,7 +33,7 @@ class SerachResultListView extends StatelessWidget {
       padding: EdgeInsets.zero,
       itemCount: 10,
       itemBuilder: (context, index) {
-        return BookListViewItem();
+        //return BookListViewItem();
       },
     );
   }

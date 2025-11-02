@@ -2,13 +2,16 @@ import 'package:booklyapp/core/constants/constants.dart';
 import 'package:booklyapp/core/utils/app_routes.dart';
 import 'package:booklyapp/core/utils/assets.dart';
 import 'package:booklyapp/core/utils/styles.dart';
+import 'package:booklyapp/features/home/data/models/books_model/books_model.dart';
+import 'package:booklyapp/features/home/presentation/views/widgets/Custom_Book_Image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 
 class BookListViewItem extends StatelessWidget {
-  const BookListViewItem({super.key});
+  const BookListViewItem({super.key, required this.book});
 
+  final BooksModel book;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -21,18 +24,10 @@ class BookListViewItem extends StatelessWidget {
           height: 120,
           child: Row(
             children: [
-              AspectRatio(
-                aspectRatio: 2.5 / 4,
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.red,
-                    borderRadius: BorderRadius.circular(16),
-                    image: const DecorationImage(
-                      fit: BoxFit.fill,
-                      image: AssetImage(AssetsData.testImg),
-                    ),
-                  ),
-                ),
+              CustomBookImage(
+                imageUrl:
+                    book.volumeInfo?.imageLinks?.thumbnail ??
+                    'https://static.vecteezy.com/system/resources/previews/036/437/096/non_2x/illustration-of-book-vector.jpg',
               ),
               const SizedBox(width: 20),
               Expanded(
@@ -41,7 +36,7 @@ class BookListViewItem extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Book Title",
+                      book.volumeInfo!.title,
                       maxLines: 2,
                       overflow: TextOverflow
                           .ellipsis, // llllllllll... if text its long puts 3 points in the end
@@ -50,8 +45,8 @@ class BookListViewItem extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 4),
-                    const Text(
-                      "Author Name",
+                    Text(
+                      book.volumeInfo!.authors[0],
                       maxLines: 1,
                       style: Styles.textStyle14,
                     ),
