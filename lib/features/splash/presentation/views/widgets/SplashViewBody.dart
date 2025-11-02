@@ -21,6 +21,8 @@ class _SplashviewbodyState extends State<Splashviewbody>
     super.initState();
     // animation method
     initSlidingAnimation();
+
+    
     // transition method
     NavigateToHomeView();
   }
@@ -63,11 +65,7 @@ class _SplashviewbodyState extends State<Splashviewbody>
   // transition method
   void NavigateToHomeView() {
     Future.delayed(const Duration(seconds: 2), () {
-      /* Get.to(
-        () => const HomeView(),
-        transition: Transition.fade,
-        duration: kTranstionDuration,
-      );*/
+      
       GoRouter.of(context).push(AppRouter.kHomeView);
     });
   }
