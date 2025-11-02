@@ -1,4 +1,3 @@
-import 'dart:nativewrappers/_internal/vm/bin/vmservice_io.dart';
 
 import 'package:booklyapp/core/errors/Failure.dart';
 import 'package:booklyapp/core/utils/api_service.dart';
@@ -16,7 +15,7 @@ class HomeRepoImpl implements HomeRepo {
     try {
       var data = await apiService.get(
         endpoint:
-            "/volumes?q=subject:Programming&sorting=newest&Filetring=free-ebooks",
+            "/volumes?Filtering=free-ebooks&q=subject:Programming",
       );
       List<BooksModel> books = [];
       for (var item in data["items"]) {

@@ -17,19 +17,24 @@ class FeaturedBooksListView extends StatelessWidget {
             height: MediaQuery.of(context).size.height * .3,
 
             child: ListView.builder(
+              physics: BouncingScrollPhysics(),
               scrollDirection: Axis.horizontal,
+              itemCount: state.books.length,
               itemBuilder: (context, index) {
-                return const Padding(
+                return Padding(
                   padding: EdgeInsets.symmetric(horizontal: 8.0),
-                  child: CustomBookImage(),
+                  child: CustomBookImage(
+                    imageUrl:
+                       state.books[index].volumeInfo?.imageLinks?.thumbnail ??
+                        'https://static.vecteezy.com/system/resources/previews/036/437/096/non_2x/illustration-of-book-vector.jpg',
+                  ),
                 );
               },
             ),
           );
         } else if (state is FeaturedBooksFailure) {
           return CustomErrorWidget(errMesaage: state.errMessage);
-        }
-        else{
+        } else {
           return const CustomLoadingIndicator();
         }
       },
