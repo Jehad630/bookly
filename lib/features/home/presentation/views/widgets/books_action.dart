@@ -1,7 +1,7 @@
+import 'package:booklyapp/core/utils/Funcetion.dart';
 import 'package:booklyapp/core/widgets/Custom_Button.dart';
 import 'package:booklyapp/features/home/data/models/books_model/books_model.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class BooksAction extends StatelessWidget {
   const BooksAction({super.key, required this.book});
@@ -27,12 +27,9 @@ class BooksAction extends StatelessWidget {
           child: CustomButton(
             onPressed: () async {
               // must do a parse for a link firest 
-              Uri url = Uri.parse(book.volumeInfo.previewLink!);
-              if (await canLaunchUrl(url)) {
-                await launchUrl(url);
-              }
+             launchCustomUrl(context, book.volumeInfo.previewLink!);
             },
-            text: "Preview",
+            text: gettext(book),
             backgroundColor: const Color.fromARGB(255, 216, 132, 132),
             textColor: Colors.white,
             borderRadius: BorderRadius.only(
@@ -43,5 +40,14 @@ class BooksAction extends StatelessWidget {
         ),
       ],
     );
+  }
+  
+  String gettext(BooksModel book) {
+    if (book.volumeInfo.previewLink == null) {
+      return "not avaliable";
+    }
+    else{
+      return "Preview";
+    }
   }
 }
