@@ -24,7 +24,7 @@ class SimilarBooksListView extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: 8.0),
                   child: CustomBookImage(
                     imageUrl:
-                    state.books[index].volumeInfo?.imageLinks?.thumbnail ??
+                    state.books[index].volumeInfo.imageLinks?.thumbnail ??
                         "https://static.vecteezy.com/system/resources/previews/036/437/096/non_2x/illustration-of-book-vector.jpg",
                   ),
                 );

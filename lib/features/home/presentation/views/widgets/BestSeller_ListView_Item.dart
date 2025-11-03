@@ -25,7 +25,7 @@ class BookListViewItem extends StatelessWidget {
             children: [
               CustomBookImage(
                 imageUrl:
-                    book.volumeInfo?.imageLinks?.thumbnail ??
+                    book.volumeInfo.imageLinks?.thumbnail ??
                     'https://static.vecteezy.com/system/resources/previews/036/437/096/non_2x/illustration-of-book-vector.jpg',
               ),
               const SizedBox(width: 20),

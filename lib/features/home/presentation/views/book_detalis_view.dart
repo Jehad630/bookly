@@ -16,7 +16,7 @@ class _BookDetalisViewState extends State<BookDetalisView> {
   void initState() {
     BlocProvider.of<SimilerBooksCubit>(
       context,
-    ).fetchSimilerBooks(category: widget.book.volumeInfo.categories![0] );
+    ).fetchSimilerBooks(category: widget.book.volumeInfo.categories![0]  );
     super.initState();
   }
 
