@@ -17,7 +17,7 @@ class BookListViewItem extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
         onTap: () {
-          GoRouter.of(context).push(AppRouter.kbookdetalisView);
+          GoRouter.of(context).push(AppRouter.kbookdetalisView,extra:book );
         },
         child: SizedBox(
           height: 120,
@@ -35,7 +35,7 @@ class BookListViewItem extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      book.volumeInfo!.title,
+                      book.volumeInfo.title!,
                       maxLines: 2,
                       overflow: TextOverflow
                           .ellipsis, // llllllllll... if text its long puts 3 points in the end
@@ -45,7 +45,7 @@ class BookListViewItem extends StatelessWidget {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      book.volumeInfo!.authors[0],
+                      book.volumeInfo.authors![0],
                       maxLines: 1,
                       style: Styles.textStyle14,
                     ),

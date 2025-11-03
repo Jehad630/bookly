@@ -22,7 +22,7 @@ class HomeRepoImpl implements HomeRepo {
         try {
           books.add(BooksModel.fromjson(item));
         } on Exception catch (e) {
-          print(item);
+          
         }
       }
       return right(books);
@@ -45,11 +45,14 @@ class HomeRepoImpl implements HomeRepo {
       List<BooksModel> books = [];
       for (var item in data["items"]) {
         books.add(BooksModel.fromjson(item));
+        print(item);
       }
+      
       return right(books);
     } catch (e) {
       if (e is DioException) {
         return left(serverFaliure.fromDioError(e));
+        
       }
 
       return left(serverFaliure(e.toString()));

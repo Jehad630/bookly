@@ -6,9 +6,9 @@ import 'panelization_summary.dart';
 import 'reading_modes.dart';
 
 class VolumeInfo extends Equatable {
-  final String title;
+  final String? title;
   final String? subtitle;
-  final List<String> authors;
+  final List<String>? authors;
   final String? publisher;
   final String? publishedDate;
   final String? description;
@@ -28,9 +28,9 @@ class VolumeInfo extends Equatable {
   final String? canonicalVolumeLink;
 
   const VolumeInfo({
-    required this.title,
+     this.title,
     this.subtitle,
-    required this.authors,
+     this.authors,
     this.publisher,
     this.publishedDate,
     this.description,
@@ -38,7 +38,7 @@ class VolumeInfo extends Equatable {
     this.readingModes,
     this.pageCount,
     this.printType,
-    this.categories,
+     this.categories,
     this.maturityRating,
     this.allowAnonLogging,
     this.contentVersion,
@@ -56,7 +56,7 @@ class VolumeInfo extends Equatable {
     return VolumeInfo(
       title: json['title'] as String,
       subtitle: json['subtitle'] as String?,
-      authors: (json['authors'] as List<dynamic>).cast<String>(),
+      authors: (json['authors'] as List<dynamic>?)?.cast<String>(),
       publisher: json['publisher'] as String?,
       publishedDate: json['publishedDate'] as String?,
       description: json['description'] as String?,
@@ -76,6 +76,7 @@ class VolumeInfo extends Equatable {
       pageCount: json['pageCount'] as int?,
       printType: json['printType'] as String?,
       categories: (json['categories'] as List<dynamic>?)?.cast<String>(),
+
       maturityRating: json['maturityRating'] as String?,
       allowAnonLogging: json['allowAnonLogging'] as bool?,
       contentVersion: json['contentVersion'] as String?,

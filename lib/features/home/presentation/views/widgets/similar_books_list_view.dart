@@ -1,26 +1,44 @@
+import 'package:booklyapp/core/widgets/Custom_Loading_Indicator.dart';
+import 'package:booklyapp/core/widgets/Custom_error_widget.dart';
 import 'package:booklyapp/features/home/presentation/views/widgets/Custom_Book_Image.dart';
+import 'package:booklyapp/features/home/presentation/views_model/similer_books_cubit/similer_books_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SimilarBooksListView extends StatelessWidget {
   const SimilarBooksListView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height * .15,
+    return BlocBuilder<SimilerBooksCubit, SimilerBooksState>(
+      builder: (context, state) {
+        if (state is SimilerBooksSuccess) {
+          return SizedBox(
+            height: MediaQuery.of(context).size.height * .15,
 
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) {
-          return const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8.0),
-            child: CustomBookImage(
-              imageUrl:
-                  "https://static.vecteezy.com/system/resources/previews/036/437/096/non_2x/illustration-of-book-vector.jpg",
+            child: ListView.builder(
+              itemCount: state.books.length,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) {
+                return  Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 8.0),
+                  child: CustomBookImage(
+                    imageUrl:
+                    state.books[index].volumeInfo?.imageLinks?.thumbnail ??
+                        "https://static.vecteezy.com/system/resources/previews/036/437/096/non_2x/illustration-of-book-vector.jpg",
+                  ),
+                );
+              },
             ),
           );
-        },
-      ),
+        }
+        else if (state is SimilerBooksFaliure){
+          return CustomErrorWidget(errMesaage: state.errmesg);
+        }
+        else{
+          return CustomLoadingIndicator();
+        }
+      },
     );
   }
 }

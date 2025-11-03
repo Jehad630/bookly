@@ -1,12 +1,13 @@
 import 'package:booklyapp/core/utils/styles.dart';
+import 'package:booklyapp/features/home/data/models/books_model/books_model.dart';
 import 'package:booklyapp/features/home/presentation/views/widgets/Custom_Book_Image.dart';
 import 'package:booklyapp/features/home/presentation/views/widgets/books_action.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class BookDetalisSection extends StatelessWidget {
-  const BookDetalisSection({super.key});
-
+  const BookDetalisSection({super.key, required this.book});
+  final BooksModel book;
   @override
   Widget build(BuildContext context) {
     dynamic WidthSc = MediaQuery.of(context).size.width;
@@ -16,20 +17,23 @@ class BookDetalisSection extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: WidthSc * .17),
           child: CustomBookImage(
             imageUrl:
+                book.volumeInfo?.imageLinks?.thumbnail ??
                 "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmG1dwMRuKsJis5Kd-dHIBGZkYMGGSQHiNr8-655Q6BAQxX2kAe3oDdOTQpaHvd5XIES4&usqp=CAU",
           ),
         ),
         SizedBox(height: 43),
         Text(
-          "Book Title",
-          maxLines: 2,
+          textAlign: TextAlign.center,
+          book.volumeInfo.title!,
+          maxLines: 1,
           overflow: TextOverflow
               .ellipsis, // llllllllll... if text its long puts 3 points in the end
           style: Styles.textStyle30.copyWith(fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 5),
         Text(
-          "Author Name",
+          textAlign: TextAlign.center,
+          book.volumeInfo.authors![0],
           maxLines: 1,
           style: Styles.textStyle20.copyWith(
             fontStyle: FontStyle.italic,
