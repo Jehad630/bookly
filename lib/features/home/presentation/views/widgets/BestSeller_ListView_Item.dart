@@ -1,6 +1,5 @@
 import 'package:booklyapp/core/constants/constants.dart';
 import 'package:booklyapp/core/utils/app_routes.dart';
-import 'package:booklyapp/core/utils/assets.dart';
 import 'package:booklyapp/core/utils/styles.dart';
 import 'package:booklyapp/features/home/data/models/books_model/books_model.dart';
 import 'package:booklyapp/features/home/presentation/views/widgets/Custom_Book_Image.dart';
@@ -60,15 +59,15 @@ class BookListViewItem extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        Spacer(),
-                        Icon(
+                        const Spacer(),
+                        const Icon(
                           FontAwesomeIcons.solidStar,
                           color: Color(0xffFFDD4F),
                         ),
-                        SizedBox(width: 6),
-                        Text("4.8"),
-                        SizedBox(width: 5),
-                        Text(
+                        const SizedBox(width: 6),
+                        const Text("4.8"),
+                        const SizedBox(width: 5),
+                        const Text(
                           "(2390)",
                           style: TextStyle(color: Color(0xff707070)),
                         ),

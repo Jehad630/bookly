@@ -1,4 +1,3 @@
-
 import 'package:booklyapp/core/errors/Failure.dart';
 import 'package:booklyapp/core/utils/api_service.dart';
 import 'package:booklyapp/features/home/data/models/books_model/books_model.dart';
@@ -10,16 +9,20 @@ class HomeRepoImpl implements HomeRepo {
   final ApiService apiService;
   HomeRepoImpl(this.apiService);
 
+  // this data for the down list view (Newset Books)
   @override
   Future<Either<Failure, List<BooksModel>>> fetchNewstBooks() async {
     try {
       var data = await apiService.get(
-        endpoint:
-            "/volumes?Filtering=free-ebooks&q=subject:Programming",
+        endpoint: "/volumes?q=subject:computer science&Filetring=free-ebooks",
       );
       List<BooksModel> books = [];
       for (var item in data["items"]) {
-        books.add(BooksModel.fromjson(item));
+        try {
+          books.add(BooksModel.fromjson(item));
+        } on Exception catch (e) {
+          print(item);
+        }
       }
       return right(books);
     } catch (e) {
@@ -31,12 +34,12 @@ class HomeRepoImpl implements HomeRepo {
     }
   }
 
+  // this data for the up list view
   @override
   Future<Either<Failure, List<BooksModel>>> fetchFeaturedBooks() async {
     try {
       var data = await apiService.get(
-        endpoint:
-            "/volumes?q=subject:Programming&Filetring=free-ebooks",
+        endpoint: "/volumes?Filtering=free-ebooks&q=subject:Programming",
       );
       List<BooksModel> books = [];
       for (var item in data["items"]) {
