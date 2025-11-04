@@ -32,8 +32,7 @@ class BooklyApp extends StatelessWidget {
         ),
         //serach view cubit
         BlocProvider(
-          create: (context) =>
-              SerachBooksCubit(getIt.get<HomeRepoImpl>())..fetchSerachBooks(),
+           create: (context) => SerachBooksCubit(getIt.get<HomeRepoImpl>()),
         ),
       ],
 

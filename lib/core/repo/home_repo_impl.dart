@@ -80,13 +80,13 @@ class HomeRepoImpl implements HomeRepo {
     }
   }
 
-
- //serach view list view 
+  //serach view list view
   @override
   Future<Either<Failure, List<BooksModel>>> fetchSerachBooks() async {
     try {
       var data = await apiService.get(
-        endpoint: "/volumes?Filtering=free-ebooks&q=subject:Programming",
+        endpoint:
+            "https://www.googleapis.com/books/v1/volumes?q=subject:{CATEGORY}&filter=free-ebooks&orderBy=relevance",
       );
       List<BooksModel> books = [];
       for (var item in data["items"]) {
@@ -99,6 +99,33 @@ class HomeRepoImpl implements HomeRepo {
         return left(serverFaliure.fromDioError(e));
       }
 
+      return left(serverFaliure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<BooksModel>>> fetchSerachBooksByCategory(
+    String category,
+  ) async {
+    try {
+      // ملاحظة: ApiService يبني URL كـ "$_baseUrl$endpoint"
+      // Base: https://www.googleapis.com/books/v1
+      // Endpoint الصحيح (بدون أخطاء إملائية):
+      final endpoint = "/volumes?Filtering=free-ebooks&q=subject:$category";
+
+      var data = await apiService.get(endpoint: endpoint);
+
+      List<BooksModel> books = [];
+      if (data['items'] != null) {
+        for (var item in data['items']) {
+          books.add(BooksModel.fromjson(item));
+        }
+      }
+      return right(books);
+    } catch (e) {
+      if (e is DioException) {
+        return left(serverFaliure.fromDioError(e));
+      }
       return left(serverFaliure(e.toString()));
     }
   }

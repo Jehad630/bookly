@@ -1,33 +1,53 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:booklyapp/features/Serach/presination/view_model/cubit/serach_books_cubit.dart';
 
-class CustomSerachTextfiled extends StatelessWidget {
+class CustomSerachTextfiled extends StatefulWidget {
   const CustomSerachTextfiled({super.key});
+
+  @override
+  State<CustomSerachTextfiled> createState() => _CustomSerachTextfiledState();
+}
+
+class _CustomSerachTextfiledState extends State<CustomSerachTextfiled> {
+  final TextEditingController _controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: _controller,
       decoration: InputDecoration(
-        enabledBorder: bulidOutlinedInputBorder(Colors.white),
-        disabledBorder: bulidOutlinedInputBorder(Colors.black),
-        focusedBorder: bulidOutlinedInputBorder(Colors.white),
-        errorBorder: bulidOutlinedInputBorder(Colors.red),
-        hintText: "Serach",
+        hintText: "Search category (e.g. programming, history...)",
         suffixIcon: IconButton(
-          onPressed: () {},
-          icon: Opacity(
-            opacity: .8,
-            child: Icon(FontAwesomeIcons.magnifyingGlass, size: 22),
-          ),
+          icon: const Icon(FontAwesomeIcons.magnifyingGlass, size: 20),
+          onPressed: () {
+            final query = _controller.text.trim();
+            if (query.isNotEmpty) {
+              context.read<SerachBooksCubit>().fetchSearchBooks(query);
+            }
+          },
         ),
+        enabledBorder: buildBorder(Colors.white),
+        focusedBorder: buildBorder(Colors.blue),
       ),
+      onSubmitted: (value) {
+        final query = value.trim();
+        if (query.isNotEmpty) {
+          context.read<SerachBooksCubit>().fetchSearchBooks(query);
+        }
+      },
     );
   }
 
-  OutlineInputBorder bulidOutlinedInputBorder(final Color color) {
-    return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(12),
-      borderSide: BorderSide(color: color, width: 2.5),
-    );
+  OutlineInputBorder buildBorder(Color color) => OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+        borderSide: BorderSide(color: color, width: 2),
+      );
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 }
