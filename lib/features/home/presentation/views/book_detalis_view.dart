@@ -1,4 +1,4 @@
-import 'package:booklyapp/core/model/models/books_model/books_model.dart';
+import 'package:booklyapp/core/model/books_model/books_model.dart';
 import 'package:booklyapp/features/home/presentation/views/widgets/book_detalis_view_body.dart';
 import 'package:booklyapp/features/home/presentation/views_model/similer_books_cubit/similer_books_cubit.dart';
 import 'package:flutter/material.dart';
@@ -16,12 +16,14 @@ class _BookDetalisViewState extends State<BookDetalisView> {
   void initState() {
     BlocProvider.of<SimilerBooksCubit>(
       context,
-    ).fetchSimilerBooks(category: widget.book.volumeInfo.categories![0]  );
+    ).fetchSimilerBooks(category: widget.book.volumeInfo.categories![0]);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: SafeArea(child:  BookDetalisViewBody(book: widget.book,)));
+    return Scaffold(
+      body: SafeArea(child: BookDetalisViewBody(book: widget.book)),
+    );
   }
 }

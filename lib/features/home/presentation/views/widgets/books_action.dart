@@ -1,6 +1,6 @@
 import 'package:booklyapp/core/utils/Funcetion.dart';
 import 'package:booklyapp/core/widgets/Custom_Button.dart';
-import 'package:booklyapp/core/model/models/books_model/books_model.dart';
+import 'package:booklyapp/core/model/books_model/books_model.dart';
 import 'package:flutter/material.dart';
 
 class BooksAction extends StatelessWidget {
@@ -22,12 +22,12 @@ class BooksAction extends StatelessWidget {
           ),
         ),
 
-        // for opening the book pdf in google 
+        // for opening the book pdf in google
         Expanded(
           child: CustomButton(
             onPressed: () async {
-              // must do a parse for a link firest 
-             launchCustomUrl(context, book.volumeInfo.previewLink!);
+              // must do a parse for a link firest
+              launchCustomUrl(context, book.volumeInfo.previewLink!);
             },
             text: gettext(book),
             backgroundColor: const Color.fromARGB(255, 216, 132, 132),
@@ -41,12 +41,11 @@ class BooksAction extends StatelessWidget {
       ],
     );
   }
-  
+
   String gettext(BooksModel book) {
     if (book.volumeInfo.previewLink == null) {
       return "not avaliable";
-    }
-    else{
+    } else {
       return "Preview";
     }
   }

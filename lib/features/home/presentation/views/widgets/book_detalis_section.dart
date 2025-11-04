@@ -1,5 +1,5 @@
 import 'package:booklyapp/core/utils/styles.dart';
-import 'package:booklyapp/core/model/models/books_model/books_model.dart';
+import 'package:booklyapp/core/model/books_model/books_model.dart';
 import 'package:booklyapp/features/home/presentation/views/widgets/Custom_Book_Image.dart';
 import 'package:booklyapp/features/home/presentation/views/widgets/books_action.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +33,7 @@ class BookDetalisSection extends StatelessWidget {
         const SizedBox(height: 5),
         Text(
           textAlign: TextAlign.center,
-          book.volumeInfo.authors![0],
+          book.volumeInfo.authors?[0] ?? "",
           maxLines: 1,
           style: Styles.textStyle20.copyWith(
             fontStyle: FontStyle.italic,
@@ -52,7 +52,7 @@ class BookDetalisSection extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 37),
-         BooksAction(book: book,),
+        BooksAction(book: book),
       ],
     );
   }

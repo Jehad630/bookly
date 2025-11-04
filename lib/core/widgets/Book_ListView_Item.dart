@@ -1,7 +1,7 @@
 import 'package:booklyapp/core/constants/constants.dart';
 import 'package:booklyapp/core/utils/app_routes.dart';
 import 'package:booklyapp/core/utils/styles.dart';
-import 'package:booklyapp/core/model/models/books_model/books_model.dart';
+import 'package:booklyapp/core/model/books_model/books_model.dart';
 import 'package:booklyapp/features/home/presentation/views/widgets/Custom_Book_Image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -17,7 +17,7 @@ class BookListViewItem extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
         onTap: () {
-          GoRouter.of(context).push(AppRouter.kbookdetalisView,extra:book );
+          GoRouter.of(context).push(AppRouter.kbookdetalisView, extra: book);
         },
         child: SizedBox(
           height: 120,
@@ -45,7 +45,7 @@ class BookListViewItem extends StatelessWidget {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      book.volumeInfo.authors![0],
+                      book.volumeInfo.authors?[0] ?? "",
                       maxLines: 1,
                       style: Styles.textStyle14,
                     ),
