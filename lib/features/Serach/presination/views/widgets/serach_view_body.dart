@@ -1,7 +1,11 @@
 import 'package:booklyapp/core/utils/styles.dart';
+import 'package:booklyapp/core/widgets/Custom_Loading_Indicator.dart';
+import 'package:booklyapp/core/widgets/Custom_error_widget.dart';
+import 'package:booklyapp/features/Serach/presination/view_model/cubit/serach_books_cubit.dart';
 import 'package:booklyapp/features/Serach/presination/views/widgets/custom_serach_textfiled.dart';
-import 'package:booklyapp/features/home/presentation/views/widgets/BestSeller_ListView_Item.dart';
+import 'package:booklyapp/core/widgets/Book_ListView_Item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SerachViewBody extends StatelessWidget {
   const SerachViewBody({super.key});
@@ -28,12 +32,23 @@ class SerachResultListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      shrinkWrap: true,
-      padding: EdgeInsets.zero,
-      itemCount: 10,
-      itemBuilder: (context, index) {
-        //return BookListViewItem();
+    return BlocBuilder<SerachBooksCubit, SerachBooksState>(
+      builder: (context, state) {
+        if (state is SerachBookSuccess) {
+          return ListView.builder(
+            shrinkWrap: true,
+            padding: EdgeInsets.zero,
+            itemCount: 10,
+            itemBuilder: (context, index) {
+              return BookListViewItem(book: state.books[index]);
+            },
+          );
+        } else if (state is SerachBooksFailiure) {
+          return CustomErrorWidget(errMesaage: state.errmesg);
+        }
+        else{
+          return CustomLoadingIndicator();
+        }
       },
     );
   }
