@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:booklyapp/features/home/data/models/books_model/books_model.dart';
-import 'package:booklyapp/features/home/data/repo/home_repo.dart';
+import 'package:booklyapp/core/model/models/books_model/books_model.dart';
+import 'package:booklyapp/core/repo/home_repo.dart';
 import 'package:equatable/equatable.dart';
 
 part 'newset_books_state.dart';
