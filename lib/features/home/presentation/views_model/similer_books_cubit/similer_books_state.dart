@@ -13,7 +13,7 @@ final class SimilerBooksLoading extends SimilerBooksState {}
 
 final class SimilerBooksSuccess extends SimilerBooksState {
   final List<BooksModel> books;
-  SimilerBooksSuccess(this.books);
+  const SimilerBooksSuccess(this.books);
 }
 
 final class SimilerBooksFaliure extends SimilerBooksState {
